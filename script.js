@@ -26,6 +26,18 @@ let currentScore = 0;
 //the player that is currently playing
 let activePlayer = 0;
 
+//function for switxh player
+const switchPlayer = function () {
+  document.getElementById(`current--${activePlayer}`).textContent = 0;
+  //the current score has to be set to zero
+  currentScore = 0;
+  activePlayer = activePlayer === 0 ? 1 : 0;
+
+  // removing the class if it's there and if it's not , it will add the class(for switching the color)
+  player0El.classList.toggle('player--active');
+  player1El.classList.toggle('player--active');
+};
+
 // Rolling dice functionality
 btnRoll.addEventListener('click', function () {
   // 1.Generate a random dice roll
@@ -45,14 +57,7 @@ btnRoll.addEventListener('click', function () {
       currentScore;
   } else {
     // Switch to next player
-    document.getElementById(`current--${activePlayer}`).textContent = 0;
-    //the current score has to be set to zero
-    currentScore = 0;
-    activePlayer = activePlayer === 0 ? 1 : 0;
-
-    // removing the class if it's there and if it's not , it will add the class(for switching the color)
-    player0El.classList.toggle('player--active');
-    player1El.classList.toggle('player--active');
+    switchPlayer();
   }
 });
 
@@ -67,4 +72,5 @@ btnHold.addEventListener('click', function () {
   // finish game
 
   //switch to the next player
+  switchPlayer();
 });
