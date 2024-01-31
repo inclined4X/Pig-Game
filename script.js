@@ -15,8 +15,14 @@ score0El.textContent = 0;
 score1El.textContent = 0;
 diceEL.classList.add('hidden');
 
+//storing scoresfor both players, which are the final scores or total that keeps accumulates
+const scores = [0, 0];
+
 // storing the current score outside the btn event to prevent resetting the current score everytime the btn roll is clicked on
 let currentScore = 0;
+
+//the player that is currently playing
+let activePlayer = 0;
 
 // Rolling dice functionality
 btnRoll.addEventListener('click', function () {
@@ -32,7 +38,11 @@ btnRoll.addEventListener('click', function () {
   if (dice !== 1) {
     // add dice to the current score
     currentScore += dice;
-    current0El.textContent = currentScore;
+    //select the current player, than using the player 0 as the active constant player
+    document.getElementById(`current--${activePlayer}`).textContent =
+      currentScore;
+
+    current0El.textContent = currentScore; //Change later
   } else {
     // Switch to next player
   }
