@@ -1,6 +1,8 @@
 'use strict';
 
 //Getting the ids and selecting elements
+const player0El = document.querySelector('.player--0');
+const player1El = document.querySelector('.player--1');
 const score0El = document.querySelector('#score--0');
 const score1El = document.getElementById('score--1');
 const current0El = document.getElementById('current--0');
@@ -41,9 +43,15 @@ btnRoll.addEventListener('click', function () {
     //select the current player, than using the player 0 as the active constant player
     document.getElementById(`current--${activePlayer}`).textContent =
       currentScore;
-
-    current0El.textContent = currentScore; //Change later
   } else {
     // Switch to next player
+    document.getElementById(`current--${activePlayer}`).textContent = 0;
+    //the current score has to be set to zero
+    currentScore = 0;
+    activePlayer = activePlayer === 0 ? 1 : 0;
+
+    // removing the class if it's there and if it's not , it will add the class(for switching the color)
+    player0El.classList.toggle('player--active');
+    player1El.classList.toggle('player--active');
   }
 });
