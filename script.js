@@ -13,21 +13,24 @@ const btnRoll = document.querySelector('.btn--roll');
 const btnHold = document.querySelector('.btn--hold');
 
 //setting the scores to zero and starting conditions
-score0El.textContent = 0;
-score1El.textContent = 0;
-diceEL.classList.add('hidden');
+// score0El.textContent = 0;
+// score1El.textContent = 0;
+// diceEL.classList.add('hidden');
 
 //storing scoresfor both players, which are the final scores or total that keeps accumulates
-const scores = [0, 0];
+// const scores = [0, 0];
 
 // storing the current score outside the btn event to prevent resetting the current score everytime the btn roll is clicked on
-let currentScore = 0;
+// let currentScore = 0;
 
 //the player that is currently playing
-let activePlayer = 0;
+// let activePlayer = 0;
 
 // playing state
-let playing = true;
+// let playing = true;
+
+// declaring variables in the init function
+let scores, currentScore, activePlayer, playing;
 
 const init = function () {
   //setting scores to 0, the current score also to zero and removing the active classes but making sure the active player is the player 1 and also the starting conditions"
@@ -47,6 +50,8 @@ const init = function () {
   player0El.classList.add('player--active');
   player1El.classList.remove('player--active');
 };
+
+init();
 
 //function for switxh player
 const switchPlayer = function () {
@@ -94,7 +99,7 @@ btnHold.addEventListener('click', function () {
       scores[activePlayer];
 
     // 2. check if player's score is >=100
-    if (scores[activePlayer] >= 20) {
+    if (scores[activePlayer] >= 100) {
       // finish game
       playing = false;
       diceEL.classList.add('hidden');
@@ -112,4 +117,4 @@ btnHold.addEventListener('click', function () {
 });
 
 // Resetting the game
-btnNew.addEventListener('click', function () {});
+btnNew.addEventListener('click', init);
