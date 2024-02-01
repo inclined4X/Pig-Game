@@ -29,6 +29,25 @@ let activePlayer = 0;
 // playing state
 let playing = true;
 
+const init = function () {
+  //setting scores to 0, the current score also to zero and removing the active classes but making sure the active player is the player 1 and also the starting conditions"
+  scores = [0, 0];
+  currentScore = 0;
+  activePlayer = 0;
+  playing = true;
+
+  score0El.textContent = 0;
+  score1El.textContent = 0;
+  current0El.textContent = 0;
+  current1El.textContent = 0;
+
+  diceEL.classList.add('hidden');
+  player0El.classList.remove('player--winner');
+  player1El.classList.remove('player--winner');
+  player0El.classList.add('player--active');
+  player1El.classList.remove('player--active');
+};
+
 //function for switxh player
 const switchPlayer = function () {
   document.getElementById(`current--${activePlayer}`).textContent = 0;
@@ -93,13 +112,4 @@ btnHold.addEventListener('click', function () {
 });
 
 // Resetting the game
-btnNew.addEventListener('click', function () {
-  score0El.textContent = 0;
-  score1El.textContent = 0;
-  current0El.textContent = 0;
-  current1El.textContent = 0;
-  player0El.classList.remove('player--winner');
-  player1El.classList.remove('player--winner');
-  player0El.classList.add('player--active');
-  player1El.classList.remove('player--active');
-});
+btnNew.addEventListener('click', function () {});
